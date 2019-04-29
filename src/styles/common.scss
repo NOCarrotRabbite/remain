@@ -1,0 +1,332 @@
+body,
+div,
+span,
+header,
+footer,
+nav,
+section,
+aside,
+article,
+ul,
+dl,
+dt,
+dd,
+li,
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+i,
+b,
+textarea,
+button,
+input,
+select,
+figure,
+figcaption {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-style: normal;
+  text-decoration: none;
+  border: none;
+  font-family: '微软雅黑', sans-serif;
+  //当用户点击iOS的Safari浏览器中的链接或JavaScript的可点击的元素时，覆盖显示的高亮颜色。
+  //-webkit-tap-highlight-color:transparent;
+  //-webkit-font-smoothing: antialiased;
+  &:focus {
+    outline: none;
+  }
+}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  border: 0;
+  //background-color: #fff;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+  //-webkit-box-shadow: inset 0 0 1px rgba(238, 234, 234, 0.89);
+  border-radius: 10px;
+  //background-color: #F5F5F5;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(238, 234, 234, 0.89);
+  background-color: #ccc;
+}
+
+input[type='button'],
+input[type='submit'],
+input[type='search'],
+input[type='reset'] {
+  //ios下移除原生样式
+  -webkit-appearance: none;
+}
+
+textarea {
+  -webkit-appearance: none;
+} //ios下移除原生样式
+
+html,
+body,
+#app {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  //background-color: #F5F5F5;
+}
+.clear:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.clear {
+  zoom: 1;
+}
+
+.back_img {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.margin {
+  margin: 0 auto;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+//卡片样式
+.el-card {
+  height: 100%;
+  box-shadow: 0;
+  border: 0;
+  margin-bottom: 10px;
+  .el-card__header {
+    border-radius: 4px;
+    height: 40px;
+    line-height: 50px;
+    overflow: hidden;
+    padding: 0px 10px;
+    background: rgba(84, 92, 100, 0.7);
+    border: 0;
+    border-bottom: 1px solid #ebeef5;
+    color: #fff;
+    .clearfix {
+      height: 40px;
+      line-height: 40px;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  .card2 {
+    .el-card__header {
+      background: rgba(84, 92, 100, 0.5);
+    }
+  }
+  //卡片内容
+  .el-card__body {
+    padding: 0px;
+  }
+}
+//按钮样式
+.el-button {
+  padding: 6px 8px;
+  /* border-radius: 0; */
+}
+//搜索栏样式
+.seachInput {
+  .el-form-item {
+    margin: 0;
+    padding: 20px 0;
+    input {
+      width: 240px;
+      border: 1px solid #e4e6eb;
+      border-radius: 4px;
+      height: 35px;
+    }
+  }
+}
+//去除卡片阴影
+.el-card.is-always-shadow,
+.el-card.is-hover-shadow:focus,
+.el-card.is-hover-shadow:hover {
+  box-shadow: none;
+}
+//改变提示框样式
+.el-message-box--center {
+  .el-message-box__header {
+    height: 40px;
+    background: #f3f5f4 !important;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    .el-message-box__headerbtn {
+      top: 0;
+      right: 10px;
+      line-height: 40px;
+    }
+  }
+}
+.el-form-item__label {
+  padding: 0;
+}
+//对话框样式
+.el-dialog {
+  width: 700px;
+  .el-dialog__header {
+    font-size: 14px;
+    height: 40px;
+    padding: 0 0 0 10px;
+    background: #f3f5f4 !important;
+    display: flex;
+    align-items: center;
+    .el-dialog__title {
+      font-size: 16px;
+    }
+    .el-dialog__headerbtn {
+      top: 0;
+      right: 10px;
+      line-height: 40px;
+    }
+  }
+}
+//日期选择器选择框不要边框
+.el-date-editor {
+  .el-range-input {
+    border: 0 !important;
+  }
+}
+//外层卡片内边距（分页所需高度）
+.cardPadding {
+  padding-bottom: 44px;
+  margin-bottom: 0;
+}
+
+//表格公共样式
+.el-table {
+  .has-gutter {
+    color: #434a50;
+    /*th {
+       background: rgba(84, 92, 100, 0.1);
+    }*/
+  }
+  .ascending .sort-caret.ascending {
+    border-bottom-color: rgba(0, 153, 51, 0.7);
+  }
+  .descending .sort-caret.descending {
+    border-top-color: rgba(0, 153, 51, 0.7);
+  }
+}
+//导航选中颜色
+.el-menu {
+  .is-active {
+    background-color: rgb(67, 74, 80) !important;
+    color: #fff !important;
+    .title {
+      color: #fff !important;
+      font-weight: bold;
+    }
+  }
+}
+//复选框边框颜色
+.el-checkbox__inner {
+  border: 1px solid #888;
+}
+
+//账户设置提交按钮
+.submitBtn {
+  width: 100%;
+  padding: 10px 0px;
+  background: rgba(102, 179, 143, 1);
+  border-color: rgba(102, 179, 143, 1);
+  color: #fff;
+}
+.submitBtn:hover {
+  background: rgba(29, 135, 86, 1);
+  border-color: rgba(29, 135, 86, 1);
+  color: #fff;
+}
+.el-button--info {
+  background: #c17ba1;
+  border-color: #c17ba1;
+}
+.el-button--info:hover {
+  background: #de89b7;
+  border-color: #de89b7;
+}
+
+//查询按钮样式
+.btnQuery {
+  height: 35px;
+  padding: 4px 13px;
+}
+//cell弹框样式
+.megBox {
+  .el-message-box__title {
+    font-size: 18px;
+  }
+  .el-message-box__content {
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    .el-message-box__input {
+      height: 30px;
+      padding-left: 10px;
+      padding-top: 0;
+      .el-input__inner {
+        height: 30px;
+        line-height: 30px;
+      }
+    }
+  }
+  .el-message-box__btns {
+    .el-button {
+      padding: 6px 8px;
+      font-size: 14px;
+    }
+  }
+}
+
+// 查询输入框样式
+.el-input__inner {
+  /* border-radius: 0; */
+}
