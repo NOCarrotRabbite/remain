@@ -127,5 +127,9 @@ export default {
   // 设置角色权限
   SET_PRIVILEGE_API: '/back_wusheng/set_privilege.php',
   // 获取库存曲线
-  GAMESTORAGELIST_API: '/back_wusheng/list_game_storage_stat.php'
+  GAMESTORAGELIST_API: '/back_wusheng/list_game_storage_stat.php',
+  // 新手卡查询
+  LIST_CARD_API: '/back_wusheng/list_card.php',
+  // 生成新手卡
+  ADD_CARD_API: '/back_wusheng/add_card.php'
 };
