@@ -53,7 +53,7 @@
              class="clearfix">
           <span>新手卡列表</span>
           <div>
-            <el-button @click="addCard"
+            <el-button @click="addCard('detailsData')"
                        type="success">生成新手卡</el-button>
             <el-button @click="exportCard"
                        element-loading-background="rgba(0, 0, 0, 0.1)"
@@ -113,10 +113,12 @@
       </el-card>
     </el-card>
     <!-- 新增邮件弹框 -->
-    <el-dialog title="发送邮件"
+    <el-dialog title="新增新手卡"
                @close="cancel"
                :visible.sync="dialogVisible">
       <el-form :model="detailsData"
+               :rules="rules"
+               ref="detailsData"
                label-width="100px"
                class="demo-form mailInput">
         <el-form-item label="生成类型：">
@@ -129,15 +131,18 @@
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="有效期 (天)：">
+        <el-form-item label="有效期 (天)："
+                      prop="days">
           <el-input v-model="detailsData.days "
                     placeholder="请输入有效期"></el-input>
         </el-form-item>
-        <el-form-item label="生成数量 (张)：">
+        <el-form-item label="生成数量 (张)："
+                      prop="count">
           <el-input v-model="detailsData.count "
                     placeholder="请输入金币数量"></el-input>
         </el-form-item>
-        <el-form-item label="金币数量：">
+        <el-form-item label="金币数量："
+                      prop="card_money">
           <el-input v-model="detailsData.card_money "
                     placeholder="请输入金币数量"></el-input>
         </el-form-item>
@@ -149,7 +154,7 @@
                    element-loading-background="rgba(0, 0, 0, 0.1)"
                    :element-loading-text="loadText"
                    v-loading.fullscreen.lock="fullscreenLoading"
-                   @click="affirmAddMail">确 定</el-button>
+                   @click="affirmAddMail('detailsData')">确 定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -207,7 +212,19 @@ export default {
         }
       ],
       fullscreenLoading: false,
-      loadText: ''
+      loadText: '',
+      rules: {
+        card_money: [
+          { required: true, message: '请输入金币数量', trigger: 'blur' },
+          { validator: this.validatePass, trigger: 'blur' }
+        ],
+        days: [
+          { required: true, message: '请输入有效期', trigger: 'blur' },
+        ],
+        count: [
+          { required: true, message: '请输入生成数量', trigger: 'blur' }
+        ]
+      }
     };
   },
   created() {
@@ -271,13 +288,12 @@ export default {
       }
     },
     // 新增新手卡
-    addCard() {
+    addCard(formName) {
       this.dialogVisible = true;
+      this.$refs[formName].resetFields();
     },
     // 确认新增新手卡
-    affirmAddMail() {
-      this.loadText = '拼命生成中，请稍后...';
-      this.fullscreenLoading = true;
+    affirmAddMail(formName) {
       let obj = {
         account: this.account,
         login_token: this.login_token,
@@ -285,34 +301,54 @@ export default {
         days: this.detailsData.days,
         count: this.detailsData.count
       };
-      this.$axios.postFormData(this.API.ADD_CARD_API, obj)
-        .then((res) => {
-          if (res.success == true) {
-            this.fullscreenLoading = false;
-            this.$message({
-              message: res.message,
-              type: 'success'
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          this.loadText = '拼命生成中，请稍后...';
+          this.fullscreenLoading = true;
+          this.$axios.postFormData(this.API.ADD_CARD_API, obj)
+            .then((res) => {
+              if (res.success == true) {
+                this.fullscreenLoading = false;
+                this.$message({
+                  message: res.message,
+                  type: 'success'
+                });
+                this.$refs[formName].resetFields();
+                this.dialogVisible = false;
+                this.currentPage = 1;
+                this.tableDataList();
+              } else {
+                this.fullscreenLoading = false;
+                this.$message.error(res.message || '请求失败，请重试！');
+                return false;
+              }
+            })
+            .catch((error) => {
+              console.log(error);
             });
-            this.dialogVisible = false;
-            this.currentPage = 1;
-            this.tableDataList();
-          } else {
-            this.fullscreenLoading = false;
-            this.$message.error(res.message || '请求失败，请重试！');
-            return false;
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+        } else {
+          console.log('error submit!!');
+          return false;
+        }
+      });
+    },
+    // 新增整数验证
+    validatePass(rule, value, callback) {
+      if (Number(value) && Number(value) > 0 && (value) % 1 === 0) {
+        callback();
+      } else if (Number(value) == 0) {
+        callback();
+      } else {
+        callback(new Error('请输入正整数'));
+      }
     },
     // 导出新手卡
     exportCard() {
-      this.loadText = '拼命导出中，请稍后...';
-      this.fullscreenLoading = true;
       let param = this.getParams();
       this.$axios.postFormData(this.API.LIST_CARD_API, this.getParams())
         .then((res) => {
+          this.loadText = '拼命导出中，请稍后...';
+          this.fullscreenLoading = true;
           if (res.success == true) {
             i++;
             if (res.data.length > 0 && exportData.length != res.data_total) {
@@ -385,7 +421,6 @@ export default {
     },
     // 下载函数
     tableToExcel(jsonData) {
-      console.log('jsonData', jsonData);
       // 列标题
       let str = '<tr><td>生成时间</td><td>CD-KEY</td><td>状态</td><td>金币数量</td><td>到期时间</td><td>兑换人ID</td><td>兑换时间</td></tr>';
       // 循环遍历，每行加入tr标签，每个单元格加td标签
@@ -463,6 +498,9 @@ export default {
     }
     .el-form {
       font-size: 0;
+      .el-form-item__label {
+        width: 120px !important;
+      }
       .el-form-item__content {
         display: flex;
         align-items: center;
