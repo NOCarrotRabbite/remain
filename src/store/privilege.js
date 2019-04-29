@@ -52,6 +52,10 @@ const data = {
     系统参数: {
       查看列表: 'list_system_para',
       修改参数: 'modify_system_para'
+    },
+    新手卡: {
+      查看列表: 'list_card',
+      新增卡片: 'add_card'
     }
   },
   推广权限管理: {
@@ -155,7 +159,9 @@ const setData = {
   set_user_money: false,
   set_user_number: false,
   set_user_rtp_buff: false,
-  set_user_type: false
+  set_user_type: false,
+  list_card: false,
+  add_card: false
 };
 export default {
   data,

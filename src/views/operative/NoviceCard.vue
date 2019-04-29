@@ -314,7 +314,6 @@ export default {
       param.page = i;
       this.$axios.postFormData(this.API.LIST_CARD_API, this.getParams())
         .then((res) => {
-          console.log(res.data);
           if (res.success == true) {
             i++;
             console.log('11', exportData.length, '2222', res.data_total);
@@ -329,6 +328,7 @@ export default {
               return true;
             }
           } else {
+            this.fullscreenLoading = false;
             this.$message.error(res.message || '请求失败，请重试！');
             return false;
           }
