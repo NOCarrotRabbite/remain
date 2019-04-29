@@ -227,9 +227,9 @@ export default {
         time_begin: this.time_begin,
         time_end: this.time_end,
         page: this.currentPage - 1,
-        card_number: this.card_number,
+        card_number: this.card_number.replace(/\s+/g, ''),
         card_status: this.card_status,
-        exchanged_user: this.exchanged_user
+        exchanged_user: this.exchanged_user.replace(/\s+/g, '')
       };
       this.$axios.postFormData(this.API.LIST_CARD_API, obj)
         .then((res) => {
