@@ -311,7 +311,6 @@ export default {
       this.loadText = '拼命导出中，请稍后...';
       this.fullscreenLoading = true;
       let param = this.getParams();
-      console.log('page', param.page);
       this.$axios.postFormData(this.API.LIST_CARD_API, this.getParams())
         .then((res) => {
           if (res.success == true) {
