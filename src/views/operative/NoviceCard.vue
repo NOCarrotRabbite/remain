@@ -311,16 +311,15 @@ export default {
       this.loadText = '拼命导出中，请稍后...';
       this.fullscreenLoading = true;
       let param = this.getParams();
-      param.page = i;
+      console.log('page', param.page);
       this.$axios.postFormData(this.API.LIST_CARD_API, this.getParams())
         .then((res) => {
-          console.log(res.data);
           if (res.success == true) {
             i++;
-            console.log('11', exportData.length, '2222', res.data_total);
-            if (exportData.length != res.data_total) {
+            if (res.data.length > 0 && exportData.length != res.data_total) {
               for (let j = 0; j < res.data.length; j++) {
                 res.data[j].card_status == 0 ? res.data[j].card_status = '未兑换' : res.data[j].card_status = '已兑换';
+                exportData.push(res.data[j]);
               }
               this.exportCard();
             } else {
@@ -344,7 +343,7 @@ export default {
         login_token: this.login_token,
         time_begin: this.time_begin,
         time_end: this.time_end,
-        page: this.currentPage - 1,
+        page: i,
         card_number: this.card_number,
         card_status: this.card_status,
         exchanged_user: this.exchanged_user
@@ -403,8 +402,8 @@ export default {
       let uri = 'data:application/vnd.ms-excel;base64,';
 
       // 下载的表格模板数据
-      let template = `<html xmlns:o="urn:schemas-microsoft-com:office:office" 
-      xmlns:x="urn:schemas-microsoft-com:office:excel" 
+      let template = `<html xmlns:o="urn:schemas-microsoft-com:office:office"
+      xmlns:x="urn:schemas-microsoft-com:office:excel"
       xmlns="http://www.w3.org/TR/REC-html40">
       <head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>
         <x:Name>${worksheet}</x:Name>
