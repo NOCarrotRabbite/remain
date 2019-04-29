@@ -220,9 +220,11 @@ export default {
         ],
         days: [
           { required: true, message: '请输入有效期', trigger: 'blur' },
+          { validator: this.validatePass, trigger: 'blur' }
         ],
         count: [
-          { required: true, message: '请输入生成数量', trigger: 'blur' }
+          { required: true, message: '请输入生成数量', trigger: 'blur' },
+          { validator: this.validatePass, trigger: 'blur' }
         ]
       }
     };
