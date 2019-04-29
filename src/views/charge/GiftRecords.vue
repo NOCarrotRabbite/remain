@@ -8,11 +8,23 @@
       <el-form :inline="true"
                :model="formInline"
                class="demo-ruleForm seachInput">
-        <el-form-item label="赠送人ID/接受人ID：">
-          <el-input v-model="formInline.query_number"
+        <el-form-item label="赠送人ID：">
+          <el-input v-model="formInline.giftId"
                     clearable
                     @clear="clear"
-                    placeholder="请输入赠送人ID"></el-input>
+                    placeholder="请输入赠送人ID"
+                    @change="banedOther"
+                    :disabled="giftBan"
+                    id="gift-id"></el-input>
+        </el-form-item>
+        <el-form-item label="接受人ID：">
+          <el-input v-model="formInline.acceptId"
+                    clearable
+                    @clear="clear"
+                    placeholder="请输入接受人ID"
+                    @change="banedOther"
+                    :disabled="acceptBan"
+                    id="accept-id"></el-input>
         </el-form-item>
         <el-form-item label="赠送时间："
                       class="dateInput">
@@ -90,7 +102,8 @@ export default {
     return {
       // 表单数据
       formInline: {
-        query_number: '',
+        giftId: '',
+        acceptId: '',
         queryDate: ''
       },
       tableData: [],
@@ -99,7 +112,9 @@ export default {
       pageSize: 10,
       time_begin: null,
       time_end: null,
-      loadingText: '数据加载中...'
+      loadingText: '数据加载中...',
+      giftBan: false,
+      acceptBan: false
     };
   },
   created() {
@@ -147,6 +162,8 @@ export default {
     clearInput() {
       this.formInline.query_number = '';
       this.formInline.queryDate = '';
+      this.formInline.acceptId = '';
+      this.formInline.giftId = '';
       this.time_begin = null;
       this.time_end = null;
       this.currentPage = 1;
@@ -161,7 +178,7 @@ export default {
       let param = {
         account: localStorage.getItem('currentUser_name'),
         login_token: localStorage.getItem('currentUser_token'),
-        query_number: this.formInline.query_number.replace(/\s+/g, ''),
+        query_number: this.formInline.giftId ? this.formInline.giftId.replace(/\s+/g, '') : this.formInline.acceptId.replace(/\s+/g, ''),
         page: this.currentPage - 1
       };
       if (this.time_begin != null && this.time_end != null) {
@@ -188,7 +205,20 @@ export default {
     },
     // 查询事件
     queryData() {
+      this.currentPage = 1;
       this.tableDataList(this.getParams());
+    },
+    banedOther() {
+      if (this.formInline.giftId) {
+        this.acceptBan = true;
+      } else {
+        this.acceptBan = false;
+      }
+      if (this.formInline.acceptId) {
+        this.giftBan = true;
+      } else {
+        this.giftBan = false;
+      }
     }
   }
 };

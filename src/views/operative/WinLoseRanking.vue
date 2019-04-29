@@ -3,43 +3,65 @@
     <el-card class="box-card cardPadding">
       <div slot="header"
            class="clearfix">
-        <span>玩家排行数据</span>
+        <span>操作查询</span>
       </div>
-      <el-table :data="tableData"
-                stripe
-                :empty-text="loadingText"
-                :header-cell-style="headerCellStyle"
-                :default-sort="{prop: 'sum', order: 'descending'}"
-                @sort-change="sortDynamic">
-        <el-table-column type="index"
-                         width="60px">
-          <template slot-scope="scope">
-            <span>
-              {{scope.$index+(currentPage - 1) * pageSize + 1 }}</span>
-          </template>
-        </el-table-column>
-        <el-table-column prop="number"
-                         label="玩家ID"
-                         show-overflow-tooltip>
-        </el-table-column>
-        <el-table-column prop="count"
-                         label="历史游戏次数"
-                         show-overflow-tooltip
-                         :sort-orders="sortOrders"
-                         sortable="custom">
-        </el-table-column>
-        <el-table-column prop="sum"
-                         label="历史输赢金币"
-                         show-overflow-tooltip
-                         :sort-orders="sortOrders"
-                         sortable="custom">
-        </el-table-column>
-      </el-table>
-      <Pagination :total="total"
-                  :currentPage="currentPage"
-                  :pageSize="pageSize"
-                  @currentPage="handleChange"
-                  @sizeChange="handleChange" />
+      <el-form :inline="true"
+               class="demo-ruleForm seachInput">
+        <el-form-item label="玩家ID：">
+          <el-input v-model="query_number"
+                    @clear="clearInput"
+                    clearable
+                    placeholder="请输入玩家ID"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button @click="query"
+                     type="primary"
+                     class="btnQuery">查询</el-button>
+          <el-button @click="clearInput"
+                     class="btnQuery">重置</el-button>
+        </el-form-item>
+      </el-form>
+      <el-card class="box-card">
+        <div slot="header"
+             class="clearfix">
+          <span>玩家排行数据</span>
+        </div>
+        <el-table :data="tableData"
+                  stripe
+                  :empty-text="loadingText"
+                  :header-cell-style="headerCellStyle"
+                  :default-sort="{prop: 'sum', order: 'descending'}"
+                  @sort-change="sortDynamic">
+          <el-table-column type="index"
+                           width="60px">
+            <template slot-scope="scope">
+              <span>
+                {{scope.$index+(currentPage - 1) * pageSize + 1 }}</span>
+            </template>
+          </el-table-column>
+          <el-table-column prop="number"
+                           label="玩家ID"
+                           show-overflow-tooltip>
+          </el-table-column>
+          <el-table-column prop="count"
+                           label="历史游戏次数"
+                           show-overflow-tooltip
+                           :sort-orders="sortOrders"
+                           sortable="custom">
+          </el-table-column>
+          <el-table-column prop="sum"
+                           label="历史输赢金币"
+                           show-overflow-tooltip
+                           :sort-orders="sortOrders"
+                           sortable="custom">
+          </el-table-column>
+        </el-table>
+        <Pagination :total="total"
+                    :currentPage="currentPage"
+                    :pageSize="pageSize"
+                    @currentPage="handleChange"
+                    @sizeChange="handleChange" />
+      </el-card>
     </el-card>
   </div>
 </template>
@@ -52,10 +74,7 @@ export default {
   components: { Pagination },
   data() {
     return {
-      // 表单数据
-      formInline: {
-        accountId: ''
-      },
+      query_number: '',
       tableData: [],
       total: 0,
       currentPage: 1,
@@ -103,15 +122,16 @@ export default {
     },
     // 清空查询输入框
     clearInput() {
-      this.formInline.accountId = '';
-      /* this.currentPage = 1;
-      this.tableDataList(); */
+      this.query_number = '';
+      this.currentPage = 1;
+      this.tableDataList(this.getParams());
     },
     // 获取查询参数
     getParams() {
       let param = {
         account: localStorage.getItem('currentUser_name'),
         login_token: localStorage.getItem('currentUser_token'),
+        query_number: this.query_number,
         page: this.currentPage - 1,
         order: this.order,
         asc: this.asc
@@ -132,6 +152,10 @@ export default {
       this.highLight = map.get(column.prop) + 1;
       this.order = map.get(column.prop);
       this.asc = map.get(column.order);
+      this.tableDataList(this.getParams());
+    },
+    query() {
+      this.currentPage = 1;
       this.tableDataList(this.getParams());
     }
   }

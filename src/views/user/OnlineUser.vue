@@ -14,24 +14,6 @@
                     clearable
                     placeholder="请输入用户ID"></el-input>
         </el-form-item>
-        <!--  <el-form-item label="游戏：">
-          <el-select v-model="formInline.game"
-                     placeholder="请选择游戏类型">
-            <el-option :label="items.name"
-                       v-for="items in gameData"
-                       :key="items.id"
-                       :value="items.id"></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="房间：">
-          <el-select v-model="formInline.room"
-                     placeholder="请选择房间">
-            <el-option :label="items.name"
-                       v-for="items in roomData"
-                       :key="items.id"
-                       :value="items.id"></el-option>
-          </el-select>
-        </el-form-item> -->
         <el-form-item>
           <el-button @click="query"
                      type="primary"
@@ -223,6 +205,7 @@ export default {
     },
     // 查询
     query() {
+      this.currentPage = 1;
       this.tableDataList();
     },
     // 玩家平台账号字体颜色

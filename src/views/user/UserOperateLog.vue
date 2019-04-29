@@ -119,6 +119,7 @@ export default {
     },
     // 查询
     query() {
+      this.currentPage = 1;
       this.tableDataList();
     },
     // 重置

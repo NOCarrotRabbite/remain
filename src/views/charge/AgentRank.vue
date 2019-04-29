@@ -153,8 +153,8 @@ export default {
     // 清空查询输入框
     clearInput() {
       this.formInline.accountId = '';
-      /* this.currentPage = 1;
-      this.tableDataList(); */
+      this.currentPage = 1;
+      this.tableDataList(this.getParams());
     }
   }
 };
