@@ -149,7 +149,7 @@
       </el-form>
       <span slot="footer"
             class="dialog-footer">
-        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button @click="clearReg('detailsData')">取 消</el-button>
         <el-button type="primary"
                    element-loading-background="rgba(0, 0, 0, 0.1)"
                    :element-loading-text="loadText"
@@ -292,7 +292,6 @@ export default {
     // 新增新手卡
     addCard(formName) {
       this.dialogVisible = true;
-      this.$refs[formName].resetFields();
     },
     // 确认新增新手卡
     affirmAddMail(formName) {
@@ -333,6 +332,10 @@ export default {
           return false;
         }
       });
+    },
+    clearReg(formName) {
+      this.$refs[formName].resetFields();
+      this.dialogVisible = false;
     },
     // 新增整数验证
     validatePass(rule, value, callback) {
