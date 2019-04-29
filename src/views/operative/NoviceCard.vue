@@ -341,12 +341,12 @@ export default {
       let obj = {
         account: this.account,
         login_token: this.login_token,
-        time_begin: this.time_begin,
+        time_begin: '1887-01-01 00:00:00',
         time_end: this.time_end,
         page: i,
-        card_number: this.card_number,
-        card_status: this.card_status,
-        exchanged_user: this.exchanged_user
+        card_number: '',
+        card_status: '-1',
+        exchanged_user: ''
       };
       return obj;
     },
