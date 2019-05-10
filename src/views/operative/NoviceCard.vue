@@ -236,7 +236,7 @@ export default {
     // 列表数据
     tableDataList() {
       this.tableData = [];
-      if (!this.isSeach) {
+      if (!this.isSeach || !this.timeVal) {
         this.time_begin = this.common.dateFtt('yyyy-MM-dd hh:mm:ss', new Date(new Date().getTime() - 3 * 60 * 60 * 1000 * 24));
         this.time_end = this.common.dateFtt('yyyy-MM-dd hh:mm:ss', new Date());
       }
