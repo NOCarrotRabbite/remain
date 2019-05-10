@@ -119,7 +119,7 @@ export default {
     // 获取列表数据
     queryData() {
       this.tableData = [];
-      if (!this.isSeach) {
+      if (!this.isSeach || !this.formInline.queryDate) {
         this.time_begin = this.common.dateFtt('yyyy-MM-dd hh:mm:ss', new Date(new Date().getTime() - 3 * 60 * 60 * 1000 * 24));
         this.time_end = this.common.dateFtt('yyyy-MM-dd hh:mm:ss', new Date());
       }
