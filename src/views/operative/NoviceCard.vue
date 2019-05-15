@@ -253,6 +253,7 @@ export default {
       this.$axios.postFormData(this.API.LIST_CARD_API, obj)
         .then((res) => {
           if (res.success == true) {
+            this.loadingText = '数据加载中...';
             if (res.data.length > 0) {
               res.data.forEach((item) => {
                 item.card_status == 0 ? item.card_status = '未兑换' : item.card_status = '已兑换';

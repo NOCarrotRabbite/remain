@@ -175,6 +175,7 @@ export default {
       this.$axios.postFormData(this.API.ONLINELIST_API, obj)
         .then((res) => {
           if (res.success === true) {
+            this.loadingText = '数据加载中...';
             if (res.data.length > 0) {
               res.data.forEach((items) => {
                 if (items.type == 'player') {

@@ -152,6 +152,7 @@ export default {
       this.$axios.postFormData(this.API.SYSTEMMAILLIST_API, obj)
         .then((res) => {
           if (res.success == true) {
+            this.loadingText = '数据加载中...';
             if (res.data.length > 0) {
               res.data.forEach((item) => {
                 item.status == 0 ? item.status = '未领取' : item.status = '已领取';

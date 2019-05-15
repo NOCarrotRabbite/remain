@@ -118,6 +118,7 @@ export default {
             recovery: ''
           };
           if (res.success == true) {
+            this.loadingText = '数据加载中...';
             this.tableData = [];
             if (res.data_total > 0) {
               for (let i in res.data) {

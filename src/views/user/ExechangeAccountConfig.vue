@@ -84,7 +84,7 @@ import Pagination from '@/components/Pagination';
 export default {
   name: 'LoginLog',
   components: { Pagination },
-  data() {
+  data () {
     return {
       tableData: [],
       total: 0,
@@ -94,16 +94,17 @@ export default {
       loadingText: '数据加载中...'
     };
   },
-  created() {
+  created () {
     this.tableDataList(this.getParams());
   },
   methods: {
     // 列表数据
-    tableDataList(param) {
+    tableDataList (param) {
       this.tableData = [];
       this.$axios.postFormData(this.API.EXECHANGE_ACCOUNT_CONFIG_API, param)
         .then((res) => {
           if (res.success === true) {
+            this.loadingText = '数据加载中...';
             if (res.data.length > 0) {
               this.tableData = res.data;
               this.total = res.data_total;
@@ -116,23 +117,23 @@ export default {
         });
     },
     // 查询
-    query() {
+    query () {
       this.currentPage = 1;
       this.tableDataList(this.getParams());
     },
     // 重置
-    clearInput() {
+    clearInput () {
       this.currentPage = 1;
       this.query_number = '';
       this.tableDataList(this.getParams());
     },
-    handleChange(val) {
+    handleChange (val) {
       this.pageSize = val.pageSize;
       this.currentPage = val.currentPage;
       this.tableDataList(this.getParams());
     },
     // 获取查询参数
-    getParams() {
+    getParams () {
       let param = {
         account: localStorage.getItem('currentUser_name'),
         login_token: localStorage.getItem('currentUser_token'),

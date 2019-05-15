@@ -8,11 +8,11 @@
       <el-form :inline="true"
                :model="formInline"
                class="demo-ruleForm seachInput">
-        <el-form-item label="用户账号/ID：">
+        <el-form-item label="用户ID：">
           <el-input v-model="formInline.accountId"
                     @clear="clearInput"
                     clearable
-                    placeholder="请输入用户账号/ID"></el-input>
+                    placeholder="请输入用户ID"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button @click="query"
@@ -266,6 +266,7 @@ export default {
       this.$axios.postFormData(this.API.USERMESSAGE_API, obj)
         .then((res) => {
           if (res.success == true) {
+            this.loadingText = '数据加载中...';
             // 判断是否有数据 改变loading文字
             if (res.data.length > 0) {
               res.data.forEach((items) => {
