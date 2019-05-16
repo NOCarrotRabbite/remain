@@ -123,7 +123,13 @@ export default {
         .then((res) => {
           if (res.success === true) {
             if (res.data.length > 0) {
-              this.tableData = res.data;
+              let result = [];
+              for (let i = 0; i < res.data.length; i++) {
+                let temp = res.data[i].data;
+                temp.record_time = res.data[i].record_time;
+                result.push(temp);
+              }
+              this.tableData = result;
               this.total = res.data_total;
             } else {
               this.loadingText = '暂无数据';

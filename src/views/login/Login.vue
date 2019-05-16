@@ -2,7 +2,7 @@
   <div class="login">
     <div class="loginFormBox">
       <p class="logo">
-        <img src="../../assets/images/xiaoyao.png"
+        <img src="../../assets/images/wusheng-logo.png"
              alt=""></p>
       <el-form :model="formData"
                :rules="rules"
@@ -59,10 +59,6 @@ export default {
         ]
       }
     };
-  },
-  created() {
-    console.log('500000', this.common.convertCurrency(500000));
-
   },
   methods: {
     /*  ...mapMutations(['tokenEdit']), */
