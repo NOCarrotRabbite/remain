@@ -1,7 +1,6 @@
 <template>
   <div>
-    <div class="PermissionManage"
-         v-if="viewShow">
+    <div class="PermissionManage" v-if="viewShow">
       <el-card class="box-card">
         <div slot="header"
              class="clearfix">

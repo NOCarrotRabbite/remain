@@ -6,3 +6,4 @@ export { default as AgentRank } from './AgentRank';
 export { default as RecoveryStatistics } from './RecoveryStatistics';
 export { default as ChargeStaff } from './ChargeStaff';
 export { default as ExchangeOrders } from './ExchangeOrders';
+export { default as GiftStatistics } from './GiftStatistics';

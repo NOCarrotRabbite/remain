@@ -1,103 +1,106 @@
 <template>
-  <div class="exchangeRecords">
-    <el-card class="box-card cardPadding">
-      <div slot="header"
-           class="clearfix">
-        <span>操作查询</span>
-      </div>
-      <el-form :inline="true"
-               :model="formInline"
-               class="demo-ruleForm seachInput">
-        <el-form-item label="赠送人ID：">
-          <el-input v-model="formInline.giftId"
-                    clearable
-                    @clear="clear"
-                    placeholder="请输入赠送人ID"
-                    @change="banedOther"
-                    :disabled="giftBan"
-                    id="gift-id"></el-input>
-        </el-form-item>
-        <el-form-item label="接受人ID：">
-          <el-input v-model="formInline.acceptId"
-                    clearable
-                    @clear="clear"
-                    placeholder="请输入接受人ID"
-                    @change="banedOther"
-                    :disabled="acceptBan"
-                    id="accept-id"></el-input>
-        </el-form-item>
-        <el-form-item label="赠送时间："
-                      class="dateInput">
-          <el-date-picker v-model="formInline.queryDate"
-                          type="daterange"
-                          start-placeholder="开始日期"
-                          end-placeholder="结束日期"
-                          :default-time="['00:00:00', '23:59:59']"
-                          @change="setQueryDate">
-          </el-date-picker>
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary"
-                     class="btnQuery"
-                     @click="queryData">查询</el-button>
-          <el-button @click="clearInput"
-                     class="btnQuery">重置</el-button>
-        </el-form-item>
-      </el-form>
-      <el-card class="box-card">
+  <div>
+    <div class="exchangeRecords" v-if="viewShow">
+      <el-card class="box-card cardPadding">
         <div slot="header"
              class="clearfix">
-          <span>充值数据</span>
+          <span>操作查询</span>
         </div>
-        <el-table :data="tableData"
-                  :cell-style="cellStyle"
-                  stripe
-                  :empty-text="loadingText"
-                  :header-cell-style="headerCellStyle">
-          <el-table-column type="index"
-                           width="60px">
-            <template slot-scope="scope">
-              <span>
-                {{scope.$index+(currentPage - 1) * pageSize + 1 }}</span>
-            </template>
-          </el-table-column>
-          <el-table-column prop="record_time"
-                           label="赠送时间"
-                           show-overflow-tooltip>
-          </el-table-column>
-          <el-table-column prop="sender"
-                           label="赠送人ID"
-                           show-overflow-tooltip>
-          </el-table-column>
-          <el-table-column prop="transfer_money"
-                           label="赠送金额"
-                           show-overflow-tooltip>
-          </el-table-column>
-          <el-table-column prop="receiver"
-                           label="接受人ID"
-                           show-overflow-tooltip>
-          </el-table-column>
-          <el-table-column prop="transfer_money_tax"
-                           label="实际领取金额"
-                           show-overflow-tooltip>
-          </el-table-column>
-          <el-table-column label="操作"
-                           width="100px"
-                           show-overflow-tooltip
-                           align="center">
-            <template slot-scope="scope">
-              <el-button type="success"
-                         @click="setStatus(scope.row, 1)">统计</el-button>
-            </template>
-          </el-table-column>
-        </el-table>
-        <Pagination :total="total"
-                    :currentPage="currentPage"
-                    :pageSize="pageSize"
-                    @currentPage="handleChange"
-                    @sizeChange="handleChange" />
+        <el-form :inline="true"
+                 :model="formInline"
+                 class="demo-ruleForm seachInput">
+          <el-form-item label="赠送人ID：">
+            <el-input v-model="formInline.giftId"
+                      clearable
+                      @clear="clear"
+                      placeholder="请输入赠送人ID"
+                      @change="banedOther"
+                      :disabled="giftBan"
+                      id="gift-id"></el-input>
+          </el-form-item>
+          <el-form-item label="接受人ID：">
+            <el-input v-model="formInline.acceptId"
+                      clearable
+                      @clear="clear"
+                      placeholder="请输入接受人ID"
+                      @change="banedOther"
+                      :disabled="acceptBan"
+                      id="accept-id"></el-input>
+          </el-form-item>
+          <el-form-item label="赠送时间："
+                        class="dateInput">
+            <el-date-picker v-model="formInline.queryDate"
+                            type="daterange"
+                            start-placeholder="开始日期"
+                            end-placeholder="结束日期"
+                            :default-time="['00:00:00', '23:59:59']"
+                            @change="setQueryDate">
+            </el-date-picker>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary"
+                       class="btnQuery"
+                       @click="queryData">查询</el-button>
+            <el-button @click="clearInput"
+                       class="btnQuery">重置</el-button>
+          </el-form-item>
+        </el-form>
+        <el-card class="box-card">
+          <div slot="header"
+               class="clearfix">
+            <span>充值数据</span>
+          </div>
+          <el-table :data="tableData"
+                    :cell-style="cellStyle"
+                    stripe
+                    :empty-text="loadingText"
+                    :header-cell-style="headerCellStyle">
+            <el-table-column type="index"
+                             width="60px">
+              <template slot-scope="scope">
+                <span>
+                  {{scope.$index+(currentPage - 1) * pageSize + 1 }}</span>
+              </template>
+            </el-table-column>
+            <el-table-column prop="record_time"
+                             label="赠送时间"
+                             show-overflow-tooltip>
+            </el-table-column>
+            <el-table-column prop="sender"
+                             label="赠送人ID"
+                             show-overflow-tooltip>
+            </el-table-column>
+            <el-table-column prop="transfer_money"
+                             label="赠送金额"
+                             show-overflow-tooltip>
+            </el-table-column>
+            <el-table-column prop="receiver"
+                             label="接受人ID"
+                             show-overflow-tooltip>
+            </el-table-column>
+            <el-table-column prop="transfer_money_tax"
+                             label="实际领取金额"
+                             show-overflow-tooltip>
+            </el-table-column>
+            <el-table-column label="操作"
+                             width="100px"
+                             show-overflow-tooltip
+                             align="center">
+              <template slot-scope="scope">
+                <el-button type="success"
+                           @click="giftStatistic(scope.row, 1)">统计</el-button>
+              </template>
+            </el-table-column>
+          </el-table>
+          <Pagination :total="total"
+                      :currentPage="currentPage"
+                      :pageSize="pageSize"
+                      @currentPage="handleChange"
+                      @sizeChange="handleChange" />
+        </el-card>
       </el-card>
-    </el-card>
+    </div>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -229,6 +232,19 @@ export default {
       } else {
         this.giftBan = false;
       }
+    },
+    // 赠送统计方法
+    giftStatistic(row) {
+      this.$router.push({ path: './gift_statistics', query: { row } });
+    }
+  },
+  computed: {
+    // 控制二级路由页面的显示和隐藏
+    viewShow() {
+      if (this.$route.path.split('/').reverse()[0] === 'gift_statistics') {
+        return false;
+      }
+      return true;
     }
   }
 };

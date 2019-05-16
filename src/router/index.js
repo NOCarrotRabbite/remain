@@ -21,6 +21,7 @@ import ChargeRecords from '@/views/charge/ChargeRecords';
 import ExchangeRecords from '@/views/charge/ExchangeRecords';
 import ExchangeOrders from '@/views/charge/ExchangeOrders';
 import GiftRecords from '@/views/charge/GiftRecords';
+import GiftStatistics from '@/views/charge/GiftStatistics';
 import RenandexcRank from '@/views/charge/RenandexcRank';
 import AgentRank from '@/views/charge/AgentRank';
 import RecoveryStatistics from '@/views/charge/RecoveryStatistics';
@@ -146,7 +147,15 @@ export default new Router({
           path: '/charge/gift_records',
           component: GiftRecords,
           name: '赠送记录',
-          meta: { title: '赠送记录', requireAuth: true }
+          meta: { title: '赠送记录', requireAuth: true },
+          children: [
+            {
+              path: '/charge/gift_statistics',
+              component: GiftStatistics,
+              name: '赠送记录统计',
+              meta: { title: '赠送记录统计', requireAuth: true }
+            }
+          ]
         },
         {
           path: '/charge/renandexc_rank',
