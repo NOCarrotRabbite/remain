@@ -81,6 +81,15 @@
                            label="实际领取金额"
                            show-overflow-tooltip>
           </el-table-column>
+          <el-table-column label="操作"
+                           width="100px"
+                           show-overflow-tooltip
+                           align="center">
+            <template slot-scope="scope">
+              <el-button type="success"
+                         @click="setStatus(scope.row, 1)">统计</el-button>
+            </template>
+          </el-table-column>
         </el-table>
         <Pagination :total="total"
                     :currentPage="currentPage"
