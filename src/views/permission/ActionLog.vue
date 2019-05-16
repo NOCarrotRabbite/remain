@@ -134,6 +134,7 @@ export default {
       this.$axios.postFormData(this.API.ADMIN_ACTION_API, param)
         .then((res) => {
           if (res.success === true) {
+            this.loadingText = '数据加载中...';
             if (res.data.length > 0) {
               this.tableData = res.data;
               this.total = res.data_total;

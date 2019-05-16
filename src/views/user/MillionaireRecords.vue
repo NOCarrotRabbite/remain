@@ -122,6 +122,7 @@ export default {
       this.$axios.postFormData(this.API.MILLIONAIRE_RECORDS_API, param)
         .then((res) => {
           if (res.success === true) {
+            this.loadingText = '数据加载中...';
             if (res.data.length > 0) {
               let result = [];
               for (let i = 0; i < res.data.length; i++) {

@@ -51,34 +51,66 @@
           <el-table-column prop="second_day"
                            label="次日留存"
                            show-overflow-tooltip>
+            <template slot-scope="scope">
+              <span>
+                {{scope.row.second_day+' %'}}</span>
+            </template>
           </el-table-column>
           <el-table-column prop="third_day"
                            label="2日留存"
                            show-overflow-tooltip>
+            <template slot-scope="scope">
+              <span>
+                {{scope.row.third_day+' %'}}</span>
+            </template>
           </el-table-column>
           <el-table-column prop="fourth_day"
                            label="3日留存"
                            show-overflow-tooltip>
+            <template slot-scope="scope">
+              <span>
+                {{scope.row.fourth_day+' %'}}</span>
+            </template>
           </el-table-column>
           <el-table-column prop="fifth_day"
                            label="4日留存"
                            show-overflow-tooltip>
+            <template slot-scope="scope">
+              <span>
+                {{scope.row.fifth_day+' %'}}</span>
+            </template>
           </el-table-column>
           <el-table-column prop="sixth_day"
                            label="5日留存"
                            show-overflow-tooltip>
+            <template slot-scope="scope">
+              <span>
+                {{scope.row.sixth_day+' %'}}</span>
+            </template>
           </el-table-column>
           <el-table-column prop="seventh_day"
                            label="6日留存"
                            show-overflow-tooltip>
+            <template slot-scope="scope">
+              <span>
+                {{scope.row.seventh_day+' %'}}</span>
+            </template>
           </el-table-column>
           <el-table-column prop="eighth_day"
                            label="7日留存"
                            show-overflow-tooltip>
+            <template slot-scope="scope">
+              <span>
+                {{scope.row.eighth_day+' %'}}</span>
+            </template>
           </el-table-column>
           <el-table-column prop="twoweek_day"
                            label="14日留存"
                            show-overflow-tooltip>
+            <template slot-scope="scope">
+              <span>
+                {{scope.row.twoweek_day+' %'}}</span>
+            </template>
           </el-table-column>
         </el-table>
         <Pagination :total="total"
@@ -122,6 +154,7 @@ export default {
       this.$axios.postFormData(this.API.RETENTION_API, formData)
         .then((res) => {
           if (res.success === true) {
+            this.loadingText = '数据加载中...';
             if (res.data.length > 0) {
               this.tableData = res.data;
               this.total = res.data_total;
