@@ -53,7 +53,7 @@
                            show-overflow-tooltip>
             <template slot-scope="scope">
               <span>
-                {{scope.row.second_day+' %'}}</span>
+                {{scope.row.second_day?scope.row.second_day:'0'+' %'}}</span>
             </template>
           </el-table-column>
           <el-table-column prop="third_day"
@@ -61,7 +61,7 @@
                            show-overflow-tooltip>
             <template slot-scope="scope">
               <span>
-                {{scope.row.third_day+' %'}}</span>
+                {{scope.row.third_day?scope.row.third_day:'0'+' %'}}</span>
             </template>
           </el-table-column>
           <el-table-column prop="fourth_day"
@@ -69,7 +69,7 @@
                            show-overflow-tooltip>
             <template slot-scope="scope">
               <span>
-                {{scope.row.fourth_day+' %'}}</span>
+                {{scope.row.fourth_day?scope.row.fourth_day:'0'+' %'}}</span>
             </template>
           </el-table-column>
           <el-table-column prop="fifth_day"
@@ -77,7 +77,7 @@
                            show-overflow-tooltip>
             <template slot-scope="scope">
               <span>
-                {{scope.row.fifth_day+' %'}}</span>
+                {{scope.row.fifth_day?scope.row.fifth_day:'0'+' %'}}</span>
             </template>
           </el-table-column>
           <el-table-column prop="sixth_day"
@@ -85,7 +85,7 @@
                            show-overflow-tooltip>
             <template slot-scope="scope">
               <span>
-                {{scope.row.sixth_day+' %'}}</span>
+                {{scope.row.sixth_day?scope.row.sixth_day:'0'+' %'}}</span>
             </template>
           </el-table-column>
           <el-table-column prop="seventh_day"
@@ -93,7 +93,7 @@
                            show-overflow-tooltip>
             <template slot-scope="scope">
               <span>
-                {{scope.row.seventh_day+' %'}}</span>
+                {{scope.row.seventh_day?scope.row.seventh_day:'0'+' %'}}</span>
             </template>
           </el-table-column>
           <el-table-column prop="eighth_day"
@@ -101,7 +101,7 @@
                            show-overflow-tooltip>
             <template slot-scope="scope">
               <span>
-                {{scope.row.eighth_day+' %'}}</span>
+                {{scope.row.eighth_day?scope.row.eighth_day:'0'+' %'}}</span>
             </template>
           </el-table-column>
           <el-table-column prop="twoweek_day"
@@ -109,7 +109,7 @@
                            show-overflow-tooltip>
             <template slot-scope="scope">
               <span>
-                {{scope.row.twoweek_day+' %'}}</span>
+                {{scope.row.twoweek_day?scope.row.twoweek_day:'0'+' %'}}</span>
             </template>
           </el-table-column>
         </el-table>
