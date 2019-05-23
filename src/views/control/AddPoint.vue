@@ -155,11 +155,11 @@ export default {
       login_token: localStorage.getItem('currentUser_token'),
       gameList: [
         '水果连连看1', '水果连连看2', '水果连连看3',
-        '兰桂坊1', '兰桂坊2', '兰桂坊3',
+        '兰桂坊1/传奇霸业1', '兰桂坊2/传奇霸业2', '兰桂坊3/传奇霸业3',
         '美人传奇1', '美人传奇2', '美人传奇3',
         '经典拉霸1', '经典拉霸2', '经典拉霸3',
         '生财有道1', '生财有道2', '生财有道3',
-        '时代巨星1', '时代巨星2', '时代巨星3',
+        '时代巨星1/夜戏貂蝉1', '时代巨星2/夜戏貂蝉2', '时代巨星3/夜戏貂蝉3',
         '王者传奇1', '王者传奇2', '王者传奇3',
         '小鸡快跑1', '小鸡快跑2', '小鸡快跑3'
       ],
@@ -209,7 +209,8 @@ export default {
       this.formInline.number = this.$route.query.data.number;
       this.formInline.game_name = this.$route.query.data.game_name;
       // 获取每条数据游戏名
-      let gameName = this.formInline.game_name.substring(0, this.formInline.game_name.length - 1);
+      /* let gameName = this.formInline.game_name.substring(0, this.formInline.game_name.length - 1); */
+      let gameName = this.screenGame(this.formInline.game_name);
       // 通过游戏名获取对应静态配置数据
       let gameDataJson = spinJson.data[gameName];
       let list = [];
@@ -248,7 +249,8 @@ export default {
       } else {
         this.disabled = true;
       }
-      let gameName = this.formInline.game_name.substring(0, this.formInline.game_name.length - 1);
+      let gameName = this.screenGame(this.formInline.game_name);
+      /* let gameName = this.formInline.game_name.substring(0, this.formInline.game_name.length - 1); */
       let gameSpinData = spinJson.data[gameName];
       if (gameSpinData.spinData != null && gameSpinData.spinData != undefined) {
         this.spinList = gameSpinData.spinData.filter((item) => {
@@ -349,6 +351,33 @@ export default {
             console.log(error);
           });
       }
+    },
+    screenGame(game) {
+      let gameName;
+      let editGame = game.split('/');
+      switch (game) {
+        case '兰桂坊1/传奇霸业1':
+          gameName = editGame[0].substring(0, editGame[0].length - 1);
+          break;
+        case '兰桂坊2/传奇霸业2':
+          gameName = editGame[0].substring(0, editGame[0].length - 1);
+          break;
+        case '兰桂坊3/传奇霸业3':
+          gameName = editGame[0].substring(0, editGame[0].length - 1);
+          break;
+        case '时代巨星1/夜戏貂蝉1':
+          gameName = editGame[0].substring(0, editGame[0].length - 1);
+          break;
+        case '时代巨星2/夜戏貂蝉2':
+          gameName = editGame[0].substring(0, editGame[0].length - 1);
+          break;
+        case '时代巨星3/夜戏貂蝉3':
+          gameName = editGame[0].substring(0, editGame[0].length - 1);
+          break;
+        default:
+          gameName = this.formInline.game_name.substring(0, this.formInline.game_name.length - 1);
+      }
+      return gameName;
     }
   },
   watch: {
@@ -378,7 +407,8 @@ export default {
         i = 0;
       }
       // 获取每条数据游戏名
-      let gameName = this.formInline.game_name.substring(0, this.formInline.game_name.length - 1);
+      /* let gameName = this.formInline.game_name.substring(0, this.formInline.game_name.length - 1); */
+      let gameName = this.screenGame(this.formInline.game_name);
       // 通过游戏名获取对应静态配置数据
       let gameDataJson = spinJson.data[gameName];
       let data;
