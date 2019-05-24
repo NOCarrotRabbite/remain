@@ -266,7 +266,6 @@ export default {
       this.$axios.postFormData(this.API.USERMESSAGE_API, obj)
         .then((res) => {
           if (res.success == true) {
-            this.loadingText = '数据加载中...';
             // 判断是否有数据 改变loading文字
             if (res.data.length > 0) {
               res.data.forEach((items) => {

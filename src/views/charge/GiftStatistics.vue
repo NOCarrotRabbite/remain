@@ -4,7 +4,8 @@
       <div slot="header"
            class="clearfix">
         <span>充值数据</span>
-        <el-button @click="backLast" type="primary">返回</el-button>
+        <el-button @click="backLast"
+                   type="primary">返回</el-button>
       </div>
       <el-table :data="tableData"
                 stripe
@@ -12,8 +13,8 @@
         <el-table-column type="index"
                          width="60px">
           <template slot-scope="scope">
-                <span>
-                  {{scope.$index+(currentPage - 1) * pageSize + 1 }}</span>
+            <span>
+              {{scope.$index+(currentPage - 1) * pageSize + 1 }}</span>
           </template>
         </el-table-column>
         <el-table-column prop="sender"
@@ -69,7 +70,6 @@ export default {
       this.$axios.postFormData(this.API.GIFT_RECORDS_API, param)
         .then((res) => {
           if (res.success === true) {
-            this.loadingText = '数据加载中...';
             if (res.data.length > 0) {
               this.tableData = res.data;
               this.total = res.data_total;

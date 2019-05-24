@@ -72,7 +72,6 @@ export default {
       this.$axios.postFormData(this.API.PROMOTER_DETAIL_API, param)
         .then((res) => {
           if (res.success == true) {
-            this.loadingText = '数据加载中...';
             if (res.data.length > 0) {
               this.playerData = res.data;
               this.total = res.data_total;

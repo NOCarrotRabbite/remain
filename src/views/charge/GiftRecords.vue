@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div class="exchangeRecords" v-if="viewShow">
+    <div class="exchangeRecords"
+         v-if="viewShow">
       <el-card class="box-card cardPadding">
         <div slot="header"
              class="clearfix">
@@ -139,7 +140,6 @@ export default {
       this.$axios.postFormData(this.API.GIFT_RECORDS_API, param)
         .then((res) => {
           if (res.success === true) {
-            this.loadingText = '数据加载中...';
             if (res.data.length > 0) {
               this.tableData = res.data;
               this.total = res.data_total;

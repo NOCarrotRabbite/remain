@@ -95,7 +95,6 @@ export default {
       this.$axios.postFormData(this.API.PROMOTER_LIST_API, param)
         .then((res) => {
           if (res.success == true) {
-            this.loadingText = '数据加载中...';
             if (res.data.length > 0) {
               for (let obj of res.data) {
                 obj.exchange_money = obj.history_promote_score - obj.current_promote_score;

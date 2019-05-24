@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div class="PermissionManage" v-if="viewShow">
+    <div class="PermissionManage"
+         v-if="viewShow">
       <el-card class="box-card">
         <div slot="header"
              class="clearfix">
@@ -122,7 +123,6 @@ export default {
       this.$axios.postFormData(this.API.LIST_ROLE_API, obj)
         .then((res) => {
           if (res.success === true) {
-            this.loadingText = '数据加载中...';
             if (res.data.length > 0) {
               this.tableData = res.data;
             } else {
