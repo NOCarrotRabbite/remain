@@ -81,24 +81,6 @@ export default new Router({
           meta: { title: '用户信息', requireAuth: true }
         },
         {
-          path: '/user/gold_records',
-          component: GoldRecords,
-          name: '金币记录',
-          meta: { title: '金币记录', requireAuth: true }
-        },
-        {
-          path: '/user/lose_win_records',
-          component: WinloseRecords,
-          name: '输赢记录',
-          meta: { title: '输赢记录', requireAuth: true }
-        },
-        {
-          path: '/user/millionaire_records',
-          component: MillionaireRecords,
-          name: '百万大赢家记录',
-          meta: { title: '百万大赢家记录', requireAuth: true }
-        },
-        {
           path: '/user/user_login_log',
           component: UserLoginLog,
           name: '用户登录日志',
@@ -124,12 +106,6 @@ export default new Router({
           component: ChargeRecords,
           name: '充值记录',
           meta: { title: '充值记录', requireAuth: true }
-        },
-        {
-          path: '/charge/charge_staff',
-          component: ChargeStaff,
-          name: '充值人员',
-          meta: { title: '充值人员', requireAuth: true }
         },
         {
           path: '/charge/exchange_records',
@@ -166,8 +142,8 @@ export default new Router({
         {
           path: '/charge/agent_rank',
           component: AgentRank,
-          name: '代理商排行',
-          meta: { title: '代理商排行', requireAuth: true }
+          name: '商家排行',
+          meta: { title: '商家商排行', requireAuth: true }
         },
         {
           path: '/charge/recovery_statistics',
@@ -197,34 +173,28 @@ export default new Router({
           meta: { title: '玩家排行', requireAuth: true }
         },
         {
-          path: '/operative/system_notification',
-          component: SystemNotification,
-          name: '系统公告',
-          meta: { title: '系统公告', requireAuth: true }
-        },
-        {
-          path: '/operative/system_customer_service',
-          component: SystemCustomerService,
-          name: '系统客服',
-          meta: { title: '系统客服', requireAuth: true }
-        },
-        {
-          path: '/operative/system_mail',
-          component: SystemMail,
-          name: '系统邮件',
-          meta: { title: '系统邮件', requireAuth: true }
-        },
-        {
-          path: '/operative/system_param',
-          component: SystemParam,
-          name: '系统参数',
-          meta: { title: '系统参数', requireAuth: true }
-        },
-        {
           path: '/operative/novice_card',
           component: NoviceCard,
-          name: '新手卡',
+          name: '新手卡密',
           meta: { title: '新手卡', requireAuth: true }
+        },
+        {
+          path: '/operative/gold_records',
+          component: GoldRecords,
+          name: '金币记录',
+          meta: { title: '金币记录', requireAuth: true }
+        },
+        {
+          path: '/operative/lose_win_records',
+          component: WinloseRecords,
+          name: '输赢记录',
+          meta: { title: '输赢记录', requireAuth: true }
+        },
+        {
+          path: '/operative/millionaire_records',
+          component: MillionaireRecords,
+          name: '百万大赢家记录',
+          meta: { title: '百万大赢家记录', requireAuth: true }
         },
 
         /*  运营页面路由结束 */
@@ -356,7 +326,37 @@ export default new Router({
               meta: { title: '添加排行', requireAuth: true }
             }
           ]
-        }
+        },
+        {
+          path: '/control/system_notification',
+          component: SystemNotification,
+          name: '系统公告',
+          meta: { title: '系统公告', requireAuth: true }
+        },
+        {
+          path: '/control/system_customer_service',
+          component: SystemCustomerService,
+          name: '系统客服',
+          meta: { title: '系统客服', requireAuth: true }
+        },
+        {
+          path: '/control/system_mail',
+          component: SystemMail,
+          name: '系统邮件',
+          meta: { title: '系统邮件', requireAuth: true }
+        },
+        {
+          path: '/control/system_param',
+          component: SystemParam,
+          name: '系统参数',
+          meta: { title: '系统参数', requireAuth: true }
+        },
+        {
+          path: '/control/charge_staff',
+          component: ChargeStaff,
+          name: '充值人员',
+          meta: { title: '充值人员', requireAuth: true }
+        },
         /* { path: '/control/treasure_rank', component: TreasureRank, name: '财富总榜', meta: { title: '财富总榜', requireAuth: true } },
         { path: '/control/glod_rank', component: GlodRank, name: '每日金榜', meta: { title: '每日金榜', requireAuth: true } }, */
         /* 控制页面路由开始 */
