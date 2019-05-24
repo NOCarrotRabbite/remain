@@ -46,24 +46,6 @@ export const sidebar = {
       icon: 'iconfont icon-yonghuxinxi'
     },
     {
-      name: 'gold_records',
-      title: '金币记录',
-      route_link: '/user/gold_records',
-      icon: 'iconfont icon-icon-'
-    },
-    {
-      name: 'lose_win_records',
-      title: '输赢记录',
-      route_link: '/user/lose_win_records',
-      icon: 'iconfont icon-huojian'
-    },
-    {
-      name: 'millionaire_records',
-      title: '百万大赢家记录',
-      route_link: '/user/millionaire_records',
-      icon: 'iconfont icon-youxiaokehu'
-    },
-    {
       name: 'user_login_log',
       title: '用户登录日志',
       route_link: '/user/user_login_log',
@@ -89,12 +71,6 @@ export const sidebar = {
       route_link: '/charge/charge_records',
       icon: 'iconfont icon-chongzhijilu'
     },*/
-    {
-      name: 'charge_staff',
-      title: '充值人员',
-      route_link: '/charge/charge_staff',
-      icon: 'iconfont icon-chongzhijilu'
-    },
     /*{
       name: 'exchange_records',
       title: '兑换记录',
@@ -114,6 +90,12 @@ export const sidebar = {
       icon: 'iconfont icon-zengsong'
     },
     {
+      name: 'recovery_statistics',
+      title: '充值回收率',
+      route_link: '/charge/recovery_statistics',
+      icon: 'iconfont icon-icon-1'
+    },
+    {
       name: 'renandexc_rank',
       title: '玩家充值排行',
       route_link: '/charge/renandexc_rank',
@@ -121,15 +103,9 @@ export const sidebar = {
     },
     {
       name: 'agent_rank',
-      title: '代理商充值排行',
+      title: '商家充值排行',
       route_link: '/charge/agent_rank',
       icon: 'iconfont icon-dailishang'
-    },
-    {
-      name: 'recovery_statistics',
-      title: '充值回收率',
-      route_link: '/charge/recovery_statistics',
-      icon: 'iconfont icon-icon-1'
     }
   ],
   operative: [
@@ -152,34 +128,28 @@ export const sidebar = {
       icon: 'iconfont icon-paihang'
     },
     {
-      name: 'system_notification',
-      title: '系统公告',
-      route_link: '/operative/system_notification',
-      icon: 'iconfont icon-xitonggonggao'
-    },
-    {
-      name: 'system_customer_service',
-      title: '系统客服',
-      route_link: '/operative/system_customer_service',
-      icon: 'iconfont icon-kefu'
-    },
-    {
-      name: 'system_mail',
-      title: '系统邮件',
-      route_link: '/operative/system_mail',
-      icon: 'iconfont icon-youjian'
-    },
-    {
-      name: 'system_param',
-      title: '系统参数',
-      route_link: '/operative/system_param',
-      icon: 'iconfont icon-xitongcanshushezhi'
-    },
-    {
       name: 'novice_card',
-      title: '新手卡',
+      title: '新手卡密',
       route_link: '/operative/novice_card',
       icon: 'iconfont icon-duihuanmayaoqingma'
+    },
+    {
+      name: 'gold_records',
+      title: '金币记录',
+      route_link: '/operative/gold_records',
+      icon: 'iconfont icon-icon-'
+    },
+    {
+      name: 'lose_win_records',
+      title: '输赢记录',
+      route_link: '/operative/lose_win_records',
+      icon: 'iconfont icon-huojian'
+    },
+    {
+      name: 'millionaire_records',
+      title: '百万大赢家记录',
+      route_link: '/operative/millionaire_records',
+      icon: 'iconfont icon-youxiaokehu'
     }
   ],
   spread: [
@@ -226,6 +196,36 @@ export const sidebar = {
       title: '每日金榜',
       route_link: '/control/glod_rank',
       icon: 'iconfont icon-jinbi2'
+    },
+    {
+      name: 'system_notification',
+      title: '系统公告',
+      route_link: '/control/system_notification',
+      icon: 'iconfont icon-xitonggonggao'
+    },
+    {
+      name: 'system_customer_service',
+      title: '系统客服',
+      route_link: '/control/system_customer_service',
+      icon: 'iconfont icon-kefu'
+    },
+    {
+      name: 'system_mail',
+      title: '系统邮件',
+      route_link: '/control/system_mail',
+      icon: 'iconfont icon-youjian'
+    },
+    {
+      name: 'system_param',
+      title: '系统参数',
+      route_link: '/control/system_param',
+      icon: 'iconfont icon-xitongcanshushezhi'
+    },
+    {
+      name: 'charge_staff',
+      title: '充值人员',
+      route_link: '/control/charge_staff',
+      icon: 'iconfont icon-chongzhijilu'
     }
   ]
 };

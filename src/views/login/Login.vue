@@ -2,7 +2,7 @@
   <div class="login">
     <div class="loginFormBox">
       <p class="logo">
-        <img src="../../assets/images/wusheng-logo.png"
+        <img src="../../assets/images/xiaoyao.png"
              alt=""></p>
       <el-form :model="formData"
                :rules="rules"
