@@ -170,6 +170,10 @@ export default {
               type: 'solid'
             }
           },
+          axisLabel: {
+            interval: 0,
+            rotate: 40
+          },
           data: []
         },
         yAxis: {
@@ -227,11 +231,22 @@ export default {
       this.$axios.postFormData(this.API.GAMESLIST_API, param)
         .then((res) => {
           if (res.success == true) {
-            let tempXaxisData = [];
+            let tempXaxisData = ['三轴拉霸1', '三轴拉霸2', '三轴拉霸3', '兰桂坊1', '兰桂坊2', '兰桂坊3',
+              '小鸡快跑1', '小鸡快跑2', '小鸡快跑3', '时代巨星1', '时代巨星2', '时代巨星3', '水果连连看1', '水果连连看2', '水果连连看3',
+              '王者传奇1', '王者传奇2', '王者传奇3', '生财有道1', '生财有道2', '生财有道3', '美人传奇1', '美人传奇2', '美人传奇3', '奔驰宝马',
+              '百人斗牛', '百人骰宝', '红黑大战', '飞禽走兽', '龙虎斗'];
             let tempSeriesData = [];
+            let map = new Map();
             for (let i in res.data) {
-              tempXaxisData.push(res.data[i].name);
-              tempSeriesData.push(res.data[i].storage);
+              /* tempXaxisData.push(res.data[i].name);
+              tempSeriesData.push(res.data[i].storage); */
+              map.set(res.data[i].name, res.data[i].storage);
+              if (!tempXaxisData.includes(res.data[i].name)) {
+                tempXaxisData.push(res.data[i].name);
+              }
+            }
+            for (let i in tempXaxisData) {
+              tempSeriesData[i] = map.get(tempXaxisData[i]);
             }
             this.optionBar.xAxis.data = tempXaxisData;
             this.optionBar.series[0].data = tempSeriesData;

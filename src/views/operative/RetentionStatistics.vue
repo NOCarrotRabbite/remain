@@ -175,7 +175,7 @@ export default {
         login_token: localStorage.getItem('currentUser_token'),
         page: this.currentPage - 1
       };
-      let startDate = new Date(new Date().getTime() - 3 * 24 * 60 * 60 * 1000);
+      let startDate = new Date(new Date().getTime() - 14 * 24 * 60 * 60 * 1000);
       let endDate = new Date();
       param.time_begin = this.common.dateFtt('yyyy-MM-dd hh:mm:ss', startDate);
       param.time_end = this.common.dateFtt('yyyy-MM-dd hh:mm:ss', endDate);
