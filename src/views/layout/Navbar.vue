@@ -1,7 +1,7 @@
 <template>
   <div class="nav-container">
     <div class="nav-left logo">
-      <img src="@/assets/images/xiaoyao.png"
+      <img src="@/assets/images/wusheng-logo.png"
            width="184"
            height="46px" />
     </div>
