@@ -122,6 +122,7 @@ export default {
       this.$axios.postFormData(this.API.MILLIONAIRE_RECORDS_API, param)
         .then((res) => {
           if (res.success === true) {
+            this.total = res.data_total;
             if (res.data.length > 0) {
               let result = [];
               for (let i = 0; i < res.data.length; i++) {
@@ -130,7 +131,6 @@ export default {
                 result.push(temp);
               }
               this.tableData = result;
-              this.total = res.data_total;
             } else {
               this.loadingText = '暂无数据';
             }

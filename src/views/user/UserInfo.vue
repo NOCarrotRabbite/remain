@@ -266,6 +266,7 @@ export default {
       this.$axios.postFormData(this.API.USERMESSAGE_API, obj)
         .then((res) => {
           if (res.success == true) {
+            this.total = res.data_total;
             // 判断是否有数据 改变loading文字
             if (res.data.length > 0) {
               res.data.forEach((items) => {
@@ -281,7 +282,6 @@ export default {
                 }
               });
               this.tableData = res.data;
-              this.total = res.data_total;
             } else {
               this.loadingText = '暂无数据';
             }

@@ -119,6 +119,7 @@ export default {
           };
           if (res.success == true) {
             this.tableData = [];
+            this.total = res.data_total;
             if (res.data_total > 0) {
               for (let i in res.data) {
                 let atopSum = parseInt(res.data[i].atop_sum);
@@ -129,7 +130,6 @@ export default {
                 data.recovery = res.data[i].ptoa_sum == 0 ? '/' : (ptoaSum / atopSum) * 100 + '%';
                 this.tableData.push(data);
               }
-              this.total = res.data_total;
             } else {
               this.loadingText = '暂无数据';
             }

@@ -90,9 +90,9 @@ export default {
       this.$axios.postFormData(this.API.PLAYER_CHARGE_RANK_API, param)
         .then((res) => {
           if (res.success === true) {
+            this.total = res.data_total;
             if (res.data.length > 0) {
               this.tableData = res.data;
-              this.total = res.data_total;
             } else {
               this.loadingText = '暂无数据';
             }
@@ -150,7 +150,7 @@ export default {
       this.asc = map.get(column.order);
       this.$axios.postFormData(this.API.PLAYER_CHARGE_RANK_API, this.getParams())
         .then((res) => {
-          if (res.success === true) {
+          if (res.success == true) {
             this.total = res.data_total;
             this.tableData = res.data;
           } else {

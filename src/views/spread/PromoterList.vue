@@ -95,12 +95,12 @@ export default {
       this.$axios.postFormData(this.API.PROMOTER_LIST_API, param)
         .then((res) => {
           if (res.success == true) {
+            this.total = res.data_total;
             if (res.data.length > 0) {
               for (let obj of res.data) {
                 obj.exchange_money = obj.history_promote_score - obj.current_promote_score;
               }
               this.tableData = res.data;
-              this.total = res.data_total;
             } else {
               this.loadingText = '暂无数据';
             }

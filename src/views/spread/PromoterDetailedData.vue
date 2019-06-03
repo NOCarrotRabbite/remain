@@ -72,9 +72,9 @@ export default {
       this.$axios.postFormData(this.API.PROMOTER_DETAIL_API, param)
         .then((res) => {
           if (res.success == true) {
+            this.total = res.data_total;
             if (res.data.length > 0) {
               this.playerData = res.data;
-              this.total = res.data_total;
             } else {
               this.loadingText = '暂无数据';
             }

@@ -96,9 +96,9 @@ export default {
       this.$axios.postFormData(this.API.WIN_LOSE_RANK_API, param)
         .then((res) => {
           if (res.success === true) {
+            this.total = res.data_total;
             if (res.data.length > 0) {
               this.tableData = res.data;
-              this.total = res.data_total;
             } else {
               this.loadingText = '暂无数据';
             }

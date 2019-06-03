@@ -114,9 +114,9 @@ export default {
         .then((res) => {
           console.log(res.data);
           if (res.success == true) {
+            this.total = res.data_total;
             if (res.data.length > 0) {
               this.tableData = res.data;
-              this.total = res.data_total;
             } else {
               this.loadingText = '暂无数据';
             }

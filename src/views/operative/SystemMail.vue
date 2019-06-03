@@ -152,12 +152,12 @@ export default {
       this.$axios.postFormData(this.API.SYSTEMMAILLIST_API, obj)
         .then((res) => {
           if (res.success == true) {
+            this.total = res.data_total;
             if (res.data.length > 0) {
               res.data.forEach((item) => {
                 item.status == 0 ? item.status = '未领取' : item.status = '已领取';
               });
               this.tableData = res.data;
-              this.total = res.data_total;
             } else {
               this.loadingText = '暂无数据';
             }

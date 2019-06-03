@@ -133,10 +133,10 @@ export default {
       };
       this.$axios.postFormData(this.API.ADMIN_ACTION_API, param)
         .then((res) => {
-          if (res.success === true) {
+          if (res.success == true) {
+            this.total = res.data_total;
             if (res.data.length > 0) {
               this.tableData = res.data;
-              this.total = res.data_total;
             } else {
               this.loadingText = '暂无数据';
             }

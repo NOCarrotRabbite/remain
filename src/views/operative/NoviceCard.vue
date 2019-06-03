@@ -253,12 +253,12 @@ export default {
       this.$axios.postFormData(this.API.LIST_CARD_API, obj)
         .then((res) => {
           if (res.success == true) {
+            this.total = res.data_total;
             if (res.data.length > 0) {
               res.data.forEach((item) => {
                 item.card_status == 0 ? item.card_status = '未兑换' : item.card_status = '已兑换';
               });
               this.tableData = res.data;
-              this.total = res.data_total;
             } else {
               this.loadingText = '暂无数据';
             }
