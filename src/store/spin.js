@@ -11,7 +11,8 @@ const data = {
       { value: '89%' },
       { value: '87%' },
       { value: '82%' },
-      { value: '72%' }
+      { value: '72%' },
+      { value: '120%' }
     ],
     freeSpinData: [
       { value: '0%' },
@@ -52,7 +53,8 @@ const data = {
       { value: '89%' },
       { value: '87%' },
       { value: '82%' },
-      { value: '72%' }
+      { value: '72%' },
+      { value: '120%' }
     ]
   },
   美人传奇: {
@@ -67,7 +69,8 @@ const data = {
       { value: '89%' },
       { value: '87%' },
       { value: '82%' },
-      { value: '72%' }
+      { value: '72%' },
+      { value: '120%' }
     ],
     freeSpinData: [
       { value: '0%' },
@@ -95,7 +98,8 @@ const data = {
       { value: '89%' },
       { value: '87%' },
       { value: '82%' },
-      { value: '72%' }
+      { value: '72%' },
+      { value: '120%' }
     ]
   },
   生财有道: {
@@ -110,7 +114,8 @@ const data = {
       { value: '89%' },
       { value: '87%' },
       { value: '82%' },
-      { value: '72%' }
+      { value: '72%' },
+      { value: '120%' }
     ],
     freeSpinData: [
       { value: '0%' },
@@ -138,7 +143,8 @@ const data = {
       { value: '89%' },
       { value: '87%' },
       { value: '82%' },
-      { value: '72%' }
+      { value: '72%' },
+      { value: '120%' }
     ],
     freeSpinData: [
       { value: '0%' },
@@ -166,7 +172,8 @@ const data = {
       { value: '89%' },
       { value: '87%' },
       { value: '82%' },
-      { value: '72%' }
+      { value: '72%' },
+      { value: '120%' }
     ],
     freeSpinData: [
       { value: '0%' },
@@ -194,7 +201,8 @@ const data = {
       { value: '89%' },
       { value: '87%' },
       { value: '82%' },
-      { value: '72%' }
+      { value: '72%' },
+      { value: '120%' }
     ]
   }
 };
